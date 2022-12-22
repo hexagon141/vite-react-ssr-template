@@ -1,12 +1,15 @@
-import {Request} from 'express';
 import ReactDOMServer from 'react-dom/server';
 import {StaticRouter} from 'react-router-dom';
-import {StaticRouterContext} from 'react-router';
-import {App} from '../../client/app';
 
-export const render = (request: Request, routerContext: StaticRouterContext) => {
+import {App} from '../../client/app';
+import {RenderConfig} from './types';
+
+export const render = ({location, routerContext}: RenderConfig) => {
   return ReactDOMServer.renderToString(
-    <StaticRouter location={request.originalUrl} context={routerContext}>
+    <StaticRouter
+      location={location}
+      context={routerContext}
+    >
       <App />
     </StaticRouter>
   )

@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  dev-server:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    ports:
+      - target: 5173
+        published: 5173
+      - target: 2810
+        published: 2810
+      - target: 24678
+        published: 24678
+    volumes:
+      - ./src:/home/app/src
